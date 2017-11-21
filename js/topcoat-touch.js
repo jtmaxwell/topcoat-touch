@@ -630,7 +630,12 @@ function TopcoatTouch($container, options) {
      * @param type {String}
      */
     function eventOff(event, selector, page, callback, type) {
-        if (typeof page == 'function') {
+        if(typeof selector === 'function') {
+            callback = selector;
+            selector = undefined;
+            page = undefined;
+        }
+        else if (typeof page === 'function') {
             callback = page;
             page = undefined;
         } else {
