@@ -1113,10 +1113,13 @@ function TopcoatTouch($container, options) {
         if (typeof cancelFunction == 'string') {
             cancelText = cancelFunction;
         }
-        if (_loadingShowing) {
+        if (self.dialogShowing()) {
+            self.hideDialog();
+        }
+        if (self.loadingShowing()) {
             self.hideLoading();
         }
-        _loadingShowing = true;
+	_loadingShowing = true;
         _$loadingDiv = $('<aside id="topcoat-loading-div" class="topcoat-overlay">' +
                 '<h3 id="topcoat-loading-message" class="topcoat-overlay__title">' + msg + '</h3>' +
                 '<div class="progress-container">' +
